@@ -29,10 +29,10 @@ def sub_cb(topic, msg):
   global topic_sub
   print((topic, msg))
   print(topic_sub)
-  if topic == topic_sub and msg == b'liga':
+  if topic == topic_sub and msg == b'l':
     print('Ligar LED')
     led.on()
-  if topic == topic_sub and msg == b'desliga':
+  if topic == topic_sub and msg == b'd':
     print('Desligar LED')
     led.off() 
 
@@ -63,7 +63,7 @@ while True:
       temp = temp_sensor.temperature()
 
       msg = b'MSG %d %3.1f ' % (counter,temp) 
-      msg_temp = b'%3.1f C' % (temp)
+      msg_temp = b'%3.1f' % (temp)
       client.publish(topic_pub, msg_temp)
       client.publish(topic_pub_status, msg)
       last_message = time.time()
